@@ -16,6 +16,9 @@ outputs:
   primitive_is_control:
     is_control: true
     type: boolean
+  path_is_control:
+    is_control: true
+    type: AnyFile
   path_with_optional:
     optional: false
     type: AnyDirectory

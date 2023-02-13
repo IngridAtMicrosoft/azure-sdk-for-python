@@ -47,6 +47,7 @@ class InternalOutputPortSchema(metaclass=PatchedSchemaMeta):
         data_key="type",
     )
     description = fields.Str()
+    is_control = fields.Bool()
     is_link_mode = fields.Bool()
     datastore_mode = fields.Str()
 

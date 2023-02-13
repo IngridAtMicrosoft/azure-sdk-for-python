@@ -742,6 +742,10 @@ class TestComponent:
             "primitive_is_control": {
                 "is_control": True,
                 "type": "boolean",
+            },
+            "path_is_control": {
+                "is_control": True,
+                "type": "AnyFile",
             }
         }
         assert component._to_rest_object().properties.component_spec["outputs"] == expected_outputs
