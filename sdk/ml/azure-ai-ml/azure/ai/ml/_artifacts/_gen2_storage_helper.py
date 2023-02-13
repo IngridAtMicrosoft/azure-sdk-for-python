@@ -110,7 +110,8 @@ class Gen2StorageClient:
                     msg=msg,
                     show_progress=show_progress,
                 )
-            print(Fore.RESET + "\n", file=sys.stderr)
+            # hide this as it will break the progress bar in concurrent uploads
+            # print(Fore.RESET + "\n", file=sys.stderr)
 
             # upload must be completed before we try to generate confirmation file
             while self.uploaded_file_count < self.total_file_count:
