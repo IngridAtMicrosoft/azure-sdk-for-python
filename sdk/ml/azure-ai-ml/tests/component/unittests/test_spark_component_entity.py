@@ -103,3 +103,15 @@ class TestSparkComponentEntity:
         rest_yaml_component = yaml_component._to_rest_object()
 
         assert rest_yaml_component == expected_rest_component
+
+    def test_from_rest_object(self):
+        invalid_code = "azureml:/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.MachineLearningServices/" \
+                       "workspaces/zzz/codes/90b33c11-365d-4ee4-aaa1-224a042deb41/versions/1"
+        yaml_path = "./tests/test_configs/dsl_pipeline/spark_job_in_pipeline/add_greeting_column_component.yml"
+        yaml_component = load_component(yaml_path)
+
+        from azure.ai.ml.entities import Component
+        rest_object = yaml_component._to_rest_object()
+        rest_object.properties.component_spec["code"] = invalid_code
+        component = Component._from_rest_object(rest_object)
+        assert component.code == invalid_code[8:]
